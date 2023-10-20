@@ -1,6 +1,6 @@
 <h1 align="center" >💻 MY CALCULATOR PROJECT 💻</h1>
 <h2>
- Basic Calculator Project
+ Basic Calculator Project 📅
 </h2>
 
 This is a simple web-based calculator project built with HTML, CSS, and JavaScript. It provides basic arithmetic operations such as addition, subtraction, multiplication, and division. The project is designed to help you understand the fundamentals of web development and JavaScript. 

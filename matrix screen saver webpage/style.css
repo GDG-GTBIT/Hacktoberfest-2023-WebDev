@@ -1,0 +1,40 @@
+html {
+    background: black;
+    height: 100%;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display:flex;
+    position:fixed;
+    justify-content: center;
+    align-items: center;
+}
+
+#text{
+     color:red;
+     stroke: aqua;
+    
+     position:absolute;
+     justify-content: left;
+     display:flex;
+     justify-content: left;
+     align-items: center;
+     
+}
+#text2{
+    color: yellow;
+    stroke: aqua;
+    stroke-width: 15%;
+    position:absolute;
+ 
+   
+    
+}
+
+
+
+

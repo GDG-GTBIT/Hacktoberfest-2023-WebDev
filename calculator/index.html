@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Calculator</title>
+</head>
+
+<body class="bg-gradient-to-r from-blue-400 to-purple-400 text-center">
+    <div class="font-bold text-5xl m-24">Calculator by Prabhnoor Singh</div>
+    <div class="flex justify-center items-center">
+        <div class="calculator bg-white rounded-lg shadow-md p-8 text-center">
+            <input type="text" id="display" class="w-full bg-gray-200 text-2xl p-2 mb-4 rounded" disabled>
+            <div class="grid grid-cols-4 gap-4">
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('7')">7</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('8')">8</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('9')">9</button>
+                <button class="operator bg-red-400 hover:bg-red-500 text-xl py-4 rounded-full"
+                    onclick="appendOperator('+')">+</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('4')">4</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('5')">5</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('6')">6</button>
+                <button class="operator bg-red-400 hover:bg-red-500 text-xl py-4 rounded-full"
+                    onclick="appendOperator('-')">-</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('1')">1</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('2')">2</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('3')">3</button>
+                <button class="operator bg-red-400 hover:bg-red-500 text-xl py-4 rounded-full"
+                    onclick="appendOperator('*')">*</button>
+                <button class="number bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendNumber('0')">0</button>
+                <button class="bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="appendDecimal()">.</button>
+                <button class="bg-gray-400 hover:bg-gray-500 text-xl py-4 rounded-full"
+                    onclick="backspace()">&#9003;</button>
+                <button class="operator bg-red-400 hover:bg-red-500 text-xl py-4 rounded-full"
+                    onclick="appendOperator('/')">/</button>
+                <button id="clear" class="bg-red-500 hover:bg-red-600 text-white text-xl py-4 rounded-full"
+                    onclick="clearDisplay()">C</button>
+                <button id="equal" class="bg-blue-500 hover:bg-blue-600 text-white text-xl py-4 rounded col-span-2"
+                    onclick="calculate()">=</button>
+                <button class="operator bg-red-400 hover:bg-red-500 text-xl py-4 rounded-full"
+                    onclick="appendOperator('^')">^</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let displayValue = '';
+
+        function appendNumber(number) {
+            displayValue += number;
+            updateDisplay();
+        }
+
+        function appendOperator(operator) {
+            displayValue += operator;
+            updateDisplay();
+        }
+
+        function appendDecimal() {
+            const lastNumber = getLastNumber();
+            if (!lastNumber.includes('.')) {
+                displayValue += '.';
+                updateDisplay();
+            }
+        }
+
+        function getLastNumber() {
+            const numbers = displayValue.split(/[\+\-\*\/\^]/);
+            return numbers[numbers.length - 1];
+        }
+
+        function calculate() {
+            try {
+                if (displayValue.includes('^')) {
+                    const [base, exponent] = displayValue.split('^');
+                    const result = Math.pow(parseFloat(base), parseFloat(exponent));
+                    displayValue = result.toString();
+                } else {
+                    displayValue = eval(displayValue).toString();
+                }
+                updateDisplay();
+            } catch (error) {
+                displayValue = 'Error';
+                updateDisplay();
+            }
+        }
+
+        function clearDisplay() {
+            displayValue = '';
+            updateDisplay();
+        }
+
+        function backspace() {
+            displayValue = displayValue.slice(0, -1);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').value = displayValue;
+        }
+    </script>
+</body>
+
+</html>

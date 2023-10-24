@@ -1,0 +1,27 @@
+.individualPokemons{
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    padding:40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.individualPokemons > img{
+    /* border: 2px solid black; */
+    height: 200px;
+    width: 200px;
+}
+
+.individualPokemons > div{
+    font-weight: bold;
+    font-size: larger;
+}
+.individualPokemons > b{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.individualPokemons:hover{
+    background-color: beige;
+}
